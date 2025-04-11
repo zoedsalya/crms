@@ -1,0 +1,38 @@
+---
+title: "practice_hpc_script"
+author: "Z. Salyapongse"
+date: "2025-04-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is my practice slurm job script from hpc practice part 1
+
+```{bash}
+
+#!/bin/bash
+#SBATCH --job-name=job1 # Give your job a name
+#SBATCH --output=job1.out # Name a file to contain code outputs
+#SBATCH --error=job1.err # Name a file to contain error messages
+#SBATCH --time=0-01:00:00 # Edit this parameter to specify a time
+#SBATCH --mail-user=salyapongse.z@northeastern.edu # Add your email
+#SBATCH --ntasks=1 # Let's start with one task
+#SBATCH --ntasks-per-node=1 # Let's start with just one task per node
+#SBATCH --mail-type=ALL
+#SBATCH --mem=20G # How many gigabytes of memory does this job need?
+#SBATCH --cpus-per-task=5 # How many CPUs do you think this code needs?
+
+# Make a new directory
+mkdir /home/salyapongse.z/crms/day2_test
+
+# Navigate to that new directory
+cd /home/salyapongse.z/crms/day2_test
+
+# Print a messge in a new file to confirm that this job ran
+echo "it ran" > day2_test.txt
+
+```
+
